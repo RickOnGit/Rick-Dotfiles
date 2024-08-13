@@ -112,10 +112,13 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-fastfetch --pipe false
+
 
 alias fastfetch='~/.config/fastfetch/printpokemonlogo.sh'
 #we have defined the alias for fastfetch, so when we run the comand at the startup we will see what our custom scrit have done.
+
+fastfetch --pipe false
+#this command runs fastfetch at the startup of the shell so have to be placed after our custom script, or it will keep generating the last shown pokemon
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 #we have silenced the instant prompt due to the execution of fastfetch.
