@@ -1,0 +1,80 @@
+{
+    "$schema": "https:github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        //"source": "~/.config/fastfetch/pokeart.txt",
+	"source": "~/.config/fastfetch/textlogo.txt",
+	"position": "top",
+	"padding": {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,    
+            "right": 0   
+        }
+    },
+    "display": {
+        "separator": " "
+    },
+    "modules": [
+        //{
+        //    "key": "             ",
+        //    "type": "custom"
+        //},
+        {
+            "key": "{#37}╭───────────╮",
+            "type": "custom"
+        },
+        {
+            "key": "{#37}│ {#91}  {#97}user   {#keys}{#37}│",
+            "type": "title",
+            "format": "{#91}{user-name}"
+        },
+        {
+            "key": "{#37}│ {#92}{icon}  {#97}distro {#keys}{#37}│",
+            "type": "os",
+            "format": "{#92}{2} {#92}{9}"
+        },
+        {
+            "key": "{#37}│ {#93}  {#97}kernel {#keys}{#37}│",
+            "type": "kernel",
+            "format": "{#93}{2}"
+        },
+        {
+             "key": "{#37}│ {#94}󰅐  {#97}uptime {#keys}{#37}│",
+             "type": "uptime",
+             "format": "{#94}{2}h {#94}{3}m"
+        },
+        
+        {        
+             "key": "{#37}│ {#95}  {#97}shell  {#keys}{#37}│",
+             "type": "shell",
+             "format": "{#95}{6}"
+        },
+        
+        {
+            "key": "{#37}│ {#96}󰏔  {#97}pkgs   {#keys}{#37}│",
+            "type": "packages",
+            "rpm": true,
+            "format": "{#96}{1}"
+        },
+       
+        {
+             "key": "{#37}│ {#37}󰍛  {#97}memory {#keys}{#37}│",
+             "type": "memory",
+             "format": "{#37}{1} {#37}| {#37}{2}"
+        },
+                
+        {
+            "key": "{#37}├───────────┤",
+            "type": "custom"
+        },
+        {
+            "key": "{#37}│ {#97}  colors {#keys}{#37}│",
+            "type": "colors",
+            "symbol": "circle"
+        },
+        {
+            "key": "{#37}╰───────────╯",
+            "type": "custom"
+        }
+    ]
+}
