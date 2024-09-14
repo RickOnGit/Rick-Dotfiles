@@ -1,10 +1,6 @@
 source ./functions.sh
 
 Setup
-echo "Welcome, insert your password: "
-sudo -v
-
-Setup
 
 read -p "Do you want to update the system (y/n): " ans
 if [[ "$ans" == "y" || "$ans" == "Y" ]]; then

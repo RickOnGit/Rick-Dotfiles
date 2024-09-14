@@ -3,7 +3,7 @@ update_system() {
 }
 
 install_shell() {
-    dnf install fastfetch && dnf install zsh   
+    sudo dnf install fastfetch zsh   
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"   
     curl -sS https://starship.rs/install.sh | sh 
 }
@@ -151,8 +151,8 @@ Setup(){
 }
 
 install_dependencies () {
-    dnf groupinstall "Development Tools" "Development Libraries" \
-    && dnf install python3 python3-devel python3-pip \
+    sudo dnf groupinstall "Development Tools" "Development Libraries" \
+    && sudo dnf install python3 python3-devel python3-pip \
     java-17-openjdk java-17-openjdk-devel \
     cargo rust \
     alsa-lib-devel fftw3-devel pulseaudio-libs-devel libtool autoconf-archive iniparser-devel pkgconf \
@@ -163,7 +163,7 @@ install_dependencies () {
 }
 
 extra_programs() {
-    dnf install cmatrix cbonsai cava btop gedit steam vlc audacity dropbox gnome-tweaks 
+    sudo dnf install cmatrix cbonsai cava btop gedit steam vlc audacity dropbox gnome-tweaks 
     cargo install tock  
     flatpak install flathub md.obsidian.Obsidian com.obsproject.Studio org.pulseaudio.pavucontrol com.vscodium.codium com.mattjakeman.ExtensionManager
 
@@ -196,7 +196,7 @@ install_popOStiling(){
 
     if [[ ! -d "$f2" ]]; then
         git clone https://github.com/pop-os/shell.git
-        dnf install gnome-shell-extension-pop-shell xprop
+        sudo dnf install gnome-shell-extension-pop-shell xprop
     fi
 }
 
