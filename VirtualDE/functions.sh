@@ -164,9 +164,9 @@ install_dependencies () {
 }
 
 extra_programs() {
-    dnf install cmatrix cbonsai cava btop gedit steam vlc audacity dropbox
+    dnf install cmatrix cbonsai cava btop gedit steam vlc audacity dropbox gnome-tweaks 
     cargo install tock  
-    flatpak install flathub md.obsidian.Obsidian com.obsproject.Studio org.pulseaudio.pavucontrol com.vscodium.codium
+    flatpak install flathub md.obsidian.Obsidian com.obsproject.Studio org.pulseaudio.pavucontrol com.vscodium.codium com.mattjakeman.ExtensionManager
 
     Setup
     read -p "Do you want to install gamemode? (y/n): " ans
