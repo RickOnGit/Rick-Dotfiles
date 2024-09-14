@@ -2,9 +2,9 @@
 update_system() {
     sudo dnf update && sudo dnf upgrade -y
     Setup
-    echo -p "Do you wanto to install extra pakages?" ans
-    if [["$ans" == "y" || "$ans" == "Y" ]]; then
-        install_dependencies
+    read -p "Do you wanto to install extra pakages?" ans
+    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
+        install_pkgs
     fi
 }
 
@@ -14,16 +14,23 @@ install_shell() {
     curl -sS https://starship.rs/install.sh | sh 
 }
 
-customize_zsh (){    
+customize_zsh (){
+    f1="$HOME/Rick-Dotfiles/VirtualDE/FastFetch"   
+    f2="$HOME/.config/fastfetch"
+
+    if [[ ! -d "$f2" ]]; then 
+        mkdir "$f2"
+    fi
+
     chsh -s $(which zsh)
+
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions  
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting  
     git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions  
    
-    cp -f ~/Rick-Dotfiles/VirtualDE/.zshrc ~/.zshrc
-    mkdir ~/.config/fastfetch
-    cp -f ~/Rick-DotFiles/VirtualDE/FastFetch/* ~/.config/fastfetch
-    chmod +x ~/.config/fastfetch/printfedoralogo.sh ~/.config/fastfetch/printpokemonlogo.sh
+    cp -f ~/Rick-Dotfiles/VirtualDE/.zshrc ~/.zshrc   
+    cp -f f1/* f1
+    
     starship preset gruvbox-rainbow -o ~/.config/starship.toml
 
     Setup
@@ -60,14 +67,17 @@ install_theme(){
             git clone https://github.com/vinceliuice/Colloid-gtk-theme.git
             Setup
         fi
-        cd "$f2" && ./install.sh -h
+
+        cd "$f2" && ./install.sh -h && echo -e "\n"
+
         while true; do
-            read -p "Install your custom Colloid-theme (insert only options) (type 'q' for quitting)" input
+            echo -e "Install your custom Colloid-theme (type 'q' for quitting): \n"
+            read input
                 if [[ "$input" == "q" ]]; then
                     echo "done"
                     break
                 fi
-            ./install.sh "$input"  
+            eval "$input"  
         done
     fi
 
@@ -81,29 +91,29 @@ install_theme(){
         cd "$f3"
         ./stylepak install-system && ./stylepak install-user 
     fi
+    
     Setup
-
     read -p "Do you want to install Fausto-Korpsvart Gruvbox-GTK-Theme? (y/n)" ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         if [[ ! -d "$f4" ]]; then
-            git clone https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme.git            
+            git clone https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme.git
+            Setup         
         fi
 
-        Setup
+        cd "$f4/themes" && ./install.sh -h && echo -e "\n"
 
-        cd "$f4/themes" && ./install.sh -h
         while true; do
-            read -p "Install your custom gruvbox-theme (insert only options) (type 'q' for quitting)" input
+            echo -p "Install your custom gruvbox-theme (type 'q' for quitting): \n"
+            read input
                 if [[ "$input" == "q" ]]; then
                     echo "done"
                     break
                 fi
-            ./install.sh "$input"  
+            eval "$input"  
         done
     fi
 
     Setup
-
     read -p "Do you want to install Marble-shell-theme? (y/n)" ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         if [[ ! -d "$f5" ]]; then
@@ -111,14 +121,15 @@ install_theme(){
         fi
         Setup
 
-        cd "$f5" && python install.py -h
+        cd "$f5" && python install.py -h && echo -e "\n"
         while true; do
-            read -p "Install your custom Marble-shell-theme! (insert only options) (type 'q' for quitting)" input
+            echo -e "Install your custom Marble-shell-theme! (type 'q' for quitting):\n "
+            read input
             if [[ "$input" == "q" ]]; then
                 echo "done"
                 break
             fi
-        python install.py "$input"
+        eval "$input"
         done
     fi
 }
@@ -151,7 +162,7 @@ Setup(){
     clear && cd "$HOME" && echo -e "$LOGO"
 }
 
-install_dependencies () {
+install_pkgs () {
     sudo dnf groupinstall "Development Tools" "Development Libraries" \
     && sudo dnf install python3 python3-devel python3-pip \
     java-17-openjdk java-17-openjdk-devel \
@@ -212,15 +223,17 @@ install_icons(){
     if [[ ! -d "$f2" ]]; then
         git clone https://github.com/vinceliuice/Colloid-icon-theme.git
         Setup
-        cd Colloid-icon-theme
-        echo "Type ./install.sh to see the icon theme options!!"
+        
+        cd Colloid-icon-theme && ./install.sh -h && echo -e "\n"
+
         while true; do
-            read -p "Install your custom Colloid-icon-theme! (type only options) (type 'q' for quitting)" input
+            echo -e "Install your custom Colloid-icon-theme! (type 'q' for quitting): \n "
+            read input
             if [[ "$input" == "q" ]]; then
                 echo "done"
                 break
             fi
-        ./install.sh "$input"
+        eval "$input"
         done
     fi
 }
