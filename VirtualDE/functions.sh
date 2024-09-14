@@ -54,16 +54,15 @@ install_theme(){
             git clone https://github.com/vinceliuice/Colloid-gtk-theme.git
             Setup
         fi
-        
-    echo "Type ./install.sh -h to see every options for the gtk-theme!!"
-    while true; do
-        read -p "Install your custom Colloid-theme (insert only options) (type 'q' for quitting)" input
-            if [[ "$input" == "q" ]]; then
-                echo "done"
-                break
-            fi
-        ./install.sh "$input"  
-    done
+        cd "$f2" && ./install.sh -h
+        while true; do
+            read -p "Install your custom Colloid-theme (insert only options) (type 'q' for quitting)" input
+                if [[ "$input" == "q" ]]; then
+                    echo "done"
+                    break
+                fi
+            ./install.sh "$input"  
+        done
     fi
 
     Setup
@@ -86,9 +85,7 @@ install_theme(){
 
         Setup
 
-        cd "$f4/themes"
-        echo "Type ./install.sh -h to see every options for the gtk-theme!!"
-
+        cd "$f4/themes" && ./install.sh -h
         while true; do
             read -p "Install your custom gruvbox-theme (insert only options) (type 'q' for quitting)" input
                 if [[ "$input" == "q" ]]; then
@@ -108,9 +105,7 @@ install_theme(){
         fi
         Setup
 
-        cd Marble-shell-theme
-        echo "Type python install.py -h to see every theme option fort the theme!!"
-
+        cd "$f5" && python install.py -h
         while true; do
             read -p "Install your custom Marble-shell-theme! (insert only options) (type 'q' for quitting)" input
             if [[ "$input" == "q" ]]; then
