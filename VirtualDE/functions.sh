@@ -1,6 +1,11 @@
-#!/bin/zsh
+#!/bin/bash
 update_system() {
     sudo dnf update && sudo dnf upgrade -y
+    Setup
+    echo -p "Do you wanto to install extra pakages?" ans
+    if [["$ans" == "y" || "$ans" == "Y" ]]; then
+        install_dependencies
+    fi
 }
 
 install_shell() {
@@ -153,15 +158,15 @@ install_dependencies () {
     cargo rust \
     alsa-lib-devel fftw3-devel pulseaudio-libs-devel libtool autoconf-archive iniparser-devel pkgconf \
     gtk-murrine-engine \
-    kernel-headers kernel-devel kernel-cores dkms \
+    kernel-headers kernel-devel kernel-core dkms \
     meson systemd-devel pkg-config git dbus-devel \
-    ostree libappstream-glib \ libgtop2-devel lm_sensors 
+    ostree libappstream-glib libgtop2-devel lm_sensors 
 }
 
 extra_programs() {
-    sudo dnf install cmatrix cbonsai cava btop gedit steam vlc audacity dropbox gnome-tweaks 
+    sudo dnf install cmatrix cbonsai cava btop gedit steam vlc audacity gnome-tweaks 
     cargo install tock  
-    flatpak install flathub md.obsidian.Obsidian com.obsproject.Studio org.pulseaudio.pavucontrol com.vscodium.codium com.mattjakeman.ExtensionManager
+    flatpak install flathub md.obsidian.Obsidian com.obsproject.Studio org.pulseaudio.pavucontrol com.vscodium.codium com.mattjakeman.ExtensionManager com.dropbox.Client
 
     Setup
     read -p "Do you want to install gamemode? (y/n): " ans

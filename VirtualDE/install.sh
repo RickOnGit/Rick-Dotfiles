@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 source ./functions.sh
 
@@ -13,7 +13,7 @@ Setup
 
 read -p "Do you want to install some programs && relative dependencies? (y/n): " ans
 if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-    install_dependencies && extra_programs
+    extra_programs
 fi
 Setup
 
@@ -48,6 +48,7 @@ if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
 fi
 
 Setup
+
 read -p "Do you want to reboot now? (y/n): " ans
 if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
     reboot

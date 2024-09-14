@@ -106,10 +106,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias fastfetch='~/.config/fastfetch/printpokemonlogo.sh'
-fastfetch --pipe false
-
-alias fastfetch='~/.config/fastfetch/colouredlogo.sh'
+#alias fastfetch='~/.config/fastfetch/printpokemonlogo.sh'
 #fastfetch --pipe false
+
+alias fastfetch='~/.config/fastfetch/printfedoralogologo.sh'
+fastfetch --pipe false
 
 eval "$(starship init zsh)"
