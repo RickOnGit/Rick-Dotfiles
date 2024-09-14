@@ -1,3 +1,4 @@
+#!/bin/zsh
 update_system() {
     sudo dnf update && sudo dnf upgrade -y
 }
@@ -120,18 +121,18 @@ install_theme(){
 install_font(){
     f1="$HOME/.fonts"
 
-    if [[ ! -d "$f1" ]]; then
+    if [[ ! -d "$f1" && ! -d "$f2" ]]; then
         mkdir -p "$f1"
     fi
 
     Setup
     read -p "Do you want to install CaskaydiaCove nerd font? (y/n)" ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-        wget -P ~/.fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CaskaydiaCove.zip  
-        unzip ~/.fonts/CaskaydiaCove.zip -d ~/.local/share/fonts/CaskaydiaCove
+        wget -O ~/.fonts/CaskaydiaCove.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CaskaydiaCove.zip  
+        unzip ~/.fonts/CaskaydiaCove.zip -d ~/.fonts/CaskaydiaCove
         rm ~/.fonts/CaskaydiaCove.zip
-    fi
-    fc-cache -fv
+        fc-cache -fv
+    fi    
 }
 
 Setup(){
