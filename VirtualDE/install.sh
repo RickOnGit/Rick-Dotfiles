@@ -49,4 +49,8 @@ if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
     install_icons
 fi
 
-
+Setup
+read -p "Do you want to reboot now? (y/n): " ans
+if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
+    reboot
+fi

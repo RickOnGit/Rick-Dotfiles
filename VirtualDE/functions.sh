@@ -14,10 +14,9 @@ customize_zsh (){
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting  
     git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions  
    
-    git clone https://github.com/RickOnGit/Rick-Dotfiles.git  
     cp -f ~/Rick-Dotfiles/VirtualDE/.zshrc ~/.zshrc
     mkdir ~/.config/fastfetch
-    cp -f Rick-DotFiles/VirtualDE/FastFetch/* ~/.config/fastfetch
+    cp -f ~/Rick-DotFiles/VirtualDE/FastFetch/* ~/.config/fastfetch
     chmod +x ~/.config/fastfetch/printfedoralogo.sh ~/.config/fastfetch/printpokemonlogo.sh
     starship preset gruvbox-rainbow -o ~/.config/starship.toml
 
