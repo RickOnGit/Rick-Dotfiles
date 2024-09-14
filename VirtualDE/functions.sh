@@ -1,5 +1,5 @@
 update_system() {
-    dnf update && dnf upgrade -y
+    sudo dnf update && sudo dnf upgrade -y
 }
 
 install_shell() {
