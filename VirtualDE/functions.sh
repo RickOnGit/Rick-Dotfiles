@@ -58,7 +58,7 @@ install_theme(){
     echo "Type ./install.sh -h to see every options for the gtk-theme!!"
     while true; do
         read -p "Install your custom Colloid-theme (insert only options) (type 'q' for quitting)" input
-            if [[ $input == "q"]]; then
+            if [[ "$input" == "q" ]]; then
                 echo "done"
                 break
             fi
@@ -91,7 +91,7 @@ install_theme(){
 
         while true; do
             read -p "Install your custom gruvbox-theme (insert only options) (type 'q' for quitting)" input
-                if [[ $input == "q"]]; then
+                if [[ "$input" == "q" ]]; then
                     echo "done"
                     break
                 fi
@@ -113,7 +113,7 @@ install_theme(){
 
         while true; do
             read -p "Install your custom Marble-shell-theme! (insert only options) (type 'q' for quitting)" input
-            if [[ $input == "q"]]; then
+            if [[ "$input" == "q" ]]; then
                 echo "done"
                 break
             fi
@@ -215,7 +215,7 @@ install_icons(){
         echo "Type ./install.sh to see the icon theme options!!"
         while true; do
             read -p "Install your custom Colloid-icon-theme! (type only options) (type 'q' for quitting)" input
-            if [[ $input == "q"]]; then
+            if [[ "$input" == "q" ]]; then
                 echo "done"
                 break
             fi
