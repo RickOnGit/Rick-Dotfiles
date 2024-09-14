@@ -13,6 +13,12 @@ fi
 
 Setup
 
+read -p "Do you want to install some programs && relative dependencies? (y/n): " ans
+if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
+    install_dependencies && extra_programs
+fi
+Setup
+
 read -p "Do you want to install zsh shell & tools? (y/n): " ans
 if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
     install_shell && Setup
@@ -42,13 +48,5 @@ read -p "Do you want to install an icon theme? (y/n): " ans
 if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
     install_icons
 fi
-
-Setup
-
-read -p "Do you want to install some programs && relative dependencies? (y/n): " ans
-if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-    install_dependencies && extra_programs
-fi
-
 
 
