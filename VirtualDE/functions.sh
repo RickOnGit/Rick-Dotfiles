@@ -15,8 +15,9 @@ install_shell() {
 }
 
 customize_zsh (){
-    f1="$HOME/Rick-Dotfiles/VirtualDE/FastFetch"   
+    f1="$HOME/Rick-Dotfiles/VirtualDE"   
     f2="$HOME/.config/fastfetch"
+    f3="$HOME/pokemon-colorscripts"
 
     if [[ ! -d "$f2" ]]; then 
         mkdir "$f2"
@@ -28,9 +29,8 @@ customize_zsh (){
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting  
     git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions  
    
-    cp -f ~/Rick-Dotfiles/VirtualDE/.zshrc ~/.zshrc   
-    cp -f f1/* f1
-    
+    cp -f f1/.zshrc "$HOME"/.zshrc   
+    cp -f f1/FastFetch/* f2    
     starship preset gruvbox-rainbow -o ~/.config/starship.toml
 
     Setup
@@ -41,7 +41,7 @@ customize_zsh (){
     
     Setup
     read -p "Do you want to install pokemon-colorscripts? (y/n): " ans
-    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
+    if [[ "$ans" == "y" || "$ans" == "Y" && ! -d "$f3" ]]; then
         git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git  
         cd pokemon-colorscripts
         ./install.sh
@@ -71,7 +71,7 @@ install_theme(){
         cd "$f2" && ./install.sh -h && echo -e "\n"
 
         while true; do
-            echo -e "Install your custom Colloid-theme (type 'q' for quitting): \n"
+            echo -e "Install your custom Colloid-theme (type 'q' for quitting):\n"
             read input
                 if [[ "$input" == "q" ]]; then
                     echo "done"
@@ -93,7 +93,7 @@ install_theme(){
     fi
     
     Setup
-    read -p "Do you want to install Fausto-Korpsvart Gruvbox-GTK-Theme? (y/n)" ans
+    read -p "Do you want to install Fausto-Korpsvart Gruvbox-GTK-Theme? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         if [[ ! -d "$f4" ]]; then
             git clone https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme.git
@@ -103,7 +103,7 @@ install_theme(){
         cd "$f4/themes" && ./install.sh -h && echo -e "\n"
 
         while true; do
-            echo -p "Install your custom gruvbox-theme (type 'q' for quitting): \n"
+            echo -p "Install your custom gruvbox-theme (type 'q' for quitting):\n"
             read input
                 if [[ "$input" == "q" ]]; then
                     echo "done"
@@ -114,7 +114,7 @@ install_theme(){
     fi
 
     Setup
-    read -p "Do you want to install Marble-shell-theme? (y/n)" ans
+    read -p "Do you want to install Marble-shell-theme? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         if [[ ! -d "$f5" ]]; then
             git clone https://github.com/imarkoff/Marble-shell-theme.git
@@ -123,7 +123,7 @@ install_theme(){
 
         cd "$f5" && python install.py -h && echo -e "\n"
         while true; do
-            echo -e "Install your custom Marble-shell-theme! (type 'q' for quitting):\n "
+            echo -e "Install your custom Marble-shell-theme! (type 'q' for quitting):\n"
             read input
             if [[ "$input" == "q" ]]; then
                 echo "done"
@@ -135,20 +135,29 @@ install_theme(){
 }
 
 install_font(){
-    f1="$HOME/.fonts"
+    f1="$HOME/.local/share/fonts"
+    f2="$HOME/nerd-fonts"
 
-    if [[ ! -d "$f1" && ! -d "$f2" ]]; then
+    if [[ ! -d "$f1"]]; then
         mkdir -p "$f1"
     fi
 
-    Setup
-    read -p "Do you want to install CaskaydiaCove nerd font? (y/n)" ans
-    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-        wget -O ~/.fonts/CaskaydiaCove.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CaskaydiaCove.zip  
-        unzip ~/.fonts/CaskaydiaCove.zip -d ~/.fonts/CaskaydiaCove
-        rm ~/.fonts/CaskaydiaCove.zip
-        fc-cache -fv
-    fi    
+    if [[ ! -d "$f2"]]; then
+        cd "$HOME" && git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
+    fi
+
+    cd "$f2"
+    while true; do
+        echo -e "Insert a specific font you want, use * for all (type q for quitting):\n"
+        read input
+
+        if [[ "$input" == "q" ]]; then
+            echo "done"
+            break
+        fi
+        cp -f -r "$f2"/patched-fonts/"$input" "$f1"
+    done
+    Setup       
 }
 
 Setup(){
@@ -227,7 +236,7 @@ install_icons(){
         cd Colloid-icon-theme && ./install.sh -h && echo -e "\n"
 
         while true; do
-            echo -e "Install your custom Colloid-icon-theme! (type 'q' for quitting): \n "
+            echo -e "Install your custom Colloid-icon-theme! (type 'q' for quitting):\n "
             read input
             if [[ "$input" == "q" ]]; then
                 echo "done"

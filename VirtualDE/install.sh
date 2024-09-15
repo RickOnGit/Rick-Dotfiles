@@ -28,7 +28,7 @@ fi
 
 Setup
 
-read -p "Do you want to install CaskaydiaCove nerd font? (y/n): " ans
+read -p "Do you want to install some nerd font? (y/n): " ans
 if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
     install_font
 fi

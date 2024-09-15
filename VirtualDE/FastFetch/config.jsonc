@@ -29,7 +29,7 @@
             "format": "{#91}{user-name}"
         },
         {
-            "key": "{#37}│ {#92}{icon}  {#97}distro {#keys}{#37}│",
+            "key": "{#37}│ {#92}󰻀  {#97}distro {#keys}{#37}│",
             "type": "os",
             "format": "{#92}{2} {#92}{9}"
         },
