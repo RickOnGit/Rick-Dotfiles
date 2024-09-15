@@ -5,7 +5,7 @@ source ./functions.sh
 Setup && show_options
 
 while true; do
-    echo -e "Chose an option:\n"
+    echo -e "\nChose an option:\n"
     read opt 
     case $opt in 
         "1")
