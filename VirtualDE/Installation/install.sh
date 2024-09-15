@@ -5,7 +5,8 @@ source ./functions.sh
 Setup && show_options
 
 while true; do
-    read -p "Chose an option: " opt
+    echo -e "Chose an option:\n"
+    read opt 
     case $opt in 
         "1")
         update_system && Setup && show_options 
@@ -30,6 +31,7 @@ while true; do
         ;;
         "q")
         echo "stopping the script ..."
+        break
         ;;
         "*")
         echo "Invalid option, retry..."
