@@ -1,0 +1,19 @@
+Hello, welcome to my script ...
+
+Insert an option listed below:
+
+1- Update the system and install exta pkgs, remember that some of those are necessary for some programs
+
+2- Install some programs like Obsidian, PulseAudio, VLC etc... Also terminal programs like btop, cava, tock etc...
+
+3- Install nerd fonts
+
+4- Install some gtk/shell themes by your own choice
+
+5- Install some icons by your own choice
+
+6- Install zsh shell and relative prompt like starhip, tools like fastfetch with my personal configuration but you can customize it by your own taste!
+
+7- Reboot the system to apply changes
+
+q- to quit the script
