@@ -1,8 +1,8 @@
 #!/bin/bash
 update_system() {
-    sudo dnf update && sudo dnf upgrade -y
+    sudo dnf update -y && sudo dnf upgrade -y
     Setup
-    read -p "Do you wanto to install extra pakages?" ans
+    read -p "Do you wanto to install extra pakages?: " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         install_pkgs
     fi
@@ -12,39 +12,50 @@ install_shell() {
     sudo dnf install fastfetch zsh   
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"   
     curl -sS https://starship.rs/install.sh | sh 
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions  
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting  
+    git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions  
+   
 }
 
-customize_zsh (){
+install_and_customize_shell (){
     f1="$HOME/Rick-Dotfiles/VirtualDE"   
     f2="$HOME/.config/fastfetch"
     f3="$HOME/pokemon-colorscripts"
+
+    read -p "Do you want to install shell && tools? (y/n): " ans
+    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
+        install_shell && Setup
+    fi
 
     if [[ ! -d "$f2" ]]; then 
         mkdir "$f2"
     fi
 
-    chsh -s $(which zsh)
+    read -p "Do you want to change shell? (y/n): " ans
+    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
+        chsh -s $(which zsh) && Setup
+    fi
+    
+    read -p "Do you want to customize fastfetch && starship? (y/n): " ans
+    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
+        cp -f "$f1"/.zshrc "$HOME"/.zshrc   
+        cp -f "$f1"/FastFetch/* "$f2"    
+        starship preset gruvbox-rainbow -o ~/.config/starship.toml
+        Setup
+    fi
 
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions  
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting  
-    git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions  
-   
-    cp -f f1/.zshrc "$HOME"/.zshrc   
-    cp -f f1/FastFetch/* f2    
-    starship preset gruvbox-rainbow -o ~/.config/starship.toml
-
-    Setup
     read -p "Do you want to install terminal themes? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         bash -c "$(wget -qO- https://git.io/vQgMr)"
+        Setup
     fi
     
-    Setup
     read -p "Do you want to install pokemon-colorscripts? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" && ! -d "$f3" ]]; then
         git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git  
         cd pokemon-colorscripts
-        ./install.sh
+        ./install.sh && Setup
     fi
     source ~/.zshrc
 }
@@ -103,7 +114,7 @@ install_theme(){
         cd "$f4/themes" && ./install.sh -h && echo -e "\n"
 
         while true; do
-            echo -p "Install your custom gruvbox-theme (type 'q' for quitting):\n"
+            echo -e "Install your custom gruvbox-theme (type 'q' for quitting):\n"
             read input
                 if [[ "$input" == "q" ]]; then
                     echo "done"
@@ -134,7 +145,7 @@ install_theme(){
     fi
 }
 
-install_font(){
+install_fonts(){
     f1="$HOME/.local/share/fonts"
     f2="$HOME/nerd-fonts"
 
@@ -146,16 +157,16 @@ install_font(){
         cd "$HOME" && git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
     fi
 
-    cd "$f2"
+    cd "$f2" && ls && echo -e"\n"
+    echo -e "Insert a specific font you want, use * for all (type q for quitting):\n"
     while true; do
-        echo -e "Insert a specific font you want, use * for all (type q for quitting):\n"
         read input
 
         if [[ "$input" == "q" ]]; then
             echo "done"
             break
         fi
-        cp -f -r "$f2"/patched-fonts/"$input" "$f1"
+        eval cp -f -r "$f2"/patched-fonts/"$input" "$f1"
     done
     Setup       
 }
@@ -180,7 +191,7 @@ install_pkgs () {
     gtk-murrine-engine \
     kernel-headers kernel-devel kernel-core dkms \
     meson systemd-devel pkg-config git dbus-devel \
-    ostree libappstream-glib libgtop2-devel lm_sensors 
+    ostree libappstream-glib libgtop2-devel lm_sensors
 }
 
 extra_programs() {
@@ -203,11 +214,10 @@ extra_programs() {
 
 install_gamemode() {
     f1="$HOME/gamemode"
-
+    sudo dnf install cmake g++
     if [[ ! -d "$f1" ]]; then
         git clone https://github.com/FeralInteractive/gamemode.git
         cd "$f1"
-        git checkout 1.8.2 # omit to build the master branch
         ./bootstrap.sh
     fi
 }
@@ -245,4 +255,8 @@ install_icons(){
         eval "$input"
         done
     fi
+}
+
+show_options(){
+    cat "$HOME"/Rick-Dotfiles/VirtualDE/options.txt
 }

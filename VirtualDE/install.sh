@@ -2,54 +2,37 @@
 
 source ./functions.sh
 
-Setup
+Setup && show_options
 
-read -p "Do you want to update the system (y/n): " ans
-if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-    update_system 
-fi
-
-Setup
-
-read -p "Do you want to install some programs && relative dependencies? (y/n): " ans
-if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-    extra_programs
-fi
-Setup
-
-read -p "Do you want to install zsh shell & tools? (y/n): " ans
-if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-    install_shell && Setup
-    read -p "Do you want to customize your zsh shell? (y/n): " ans
-    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-        customize_zsh
-    fi
-fi
-
-Setup
-
-read -p "Do you want to install some nerd font? (y/n): " ans
-if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-    install_font
-fi
-
-Setup
-
-read -p "Do you want to install a gtk &&/|| shell theme? (y/n): " ans
-if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-    install_theme
-fi
-
-Setup
-
-read -p "Do you want to install an icon theme? (y/n): " ans
-if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-    install_icons
-fi
-
-Setup
-
-read -p "Do you want to reboot now? (y/n): " ans
-if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-    reboot
-fi
+while true; do
+    read -p "Chose an option: " opt
+    case $opt in 
+        "1")
+        update_system && Setup && show_options 
+        ;;
+        "2")
+        extra_programs && Setup && show_options
+        ;;
+        "3")
+        install_fonts && Setup && show_options
+        ;;
+        "4")
+        install_theme && Setup && show_options
+        ;;
+        "5")
+        install_icons && Setup && show_options
+        ;;
+        "6")
+        install_and_customize_shell && Setup && show_options
+        ;;
+        "7")
+        reboot
+        ;;
+        "q")
+        echo "stopping the script ..."
+        ;;
+        "*")
+        echo "Invalid option, retry..."
+        ;;
+    esac
+done 
