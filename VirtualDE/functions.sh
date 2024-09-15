@@ -138,11 +138,11 @@ install_font(){
     f1="$HOME/.local/share/fonts"
     f2="$HOME/nerd-fonts"
 
-    if [[ ! -d "$f1"]]; then
+    if [[ ! -d "$f1" ]]; then
         mkdir -p "$f1"
     fi
 
-    if [[ ! -d "$f2"]]; then
+    if [[ ! -d "$f2" ]]; then
         cd "$HOME" && git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
     fi
 
