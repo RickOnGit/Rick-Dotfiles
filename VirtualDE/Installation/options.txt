@@ -12,10 +12,8 @@ Insert an option listed below:
 
 5- Install some icons by your own choice
 
-6- Install gnome shell extensions
+6- Install zsh shell and relative prompt like starhip, tools like fastfetch with my personal configuration but you can customize it by your own taste!
 
-8- Install zsh shell and relative prompt like starhip, tools like fastfetch with my personal configuration but you can customize it by your own taste!
-
-9- Reboot the system to apply changes
+7- Reboot the system to apply changes
 
 q- to quit the script
