@@ -258,5 +258,5 @@ install_icons(){
 }
 
 show_options(){
-    cat "$HOME"/Rick-Dotfiles/VirtualDE/options.txt
+    cat "$HOME"/Rick-Dotfiles/VirtualDE/Installation/options.txt
 }
