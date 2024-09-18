@@ -24,13 +24,13 @@ while true; do
         install_icons && Setup && show_options
         ;;
         "6")
-        install_and_customize_shell && Setup && show_options
+        install_cursors && Setup && show_options
         ;;
         "7")
-        reboot
+        install_and_customize_shell && Setup && show_options
         ;;
         "8")
-        install_cursors && Setup && show_options
+        reboot
         ;;
         "q")
         echo "stopping the script ..."
