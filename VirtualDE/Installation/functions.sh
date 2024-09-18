@@ -28,9 +28,7 @@ install_and_customize_shell (){
         install_shell && Setup
     fi
 
-    if [[ ! -d "$f2" ]]; then 
-        mkdir "$f2"
-    fi
+    mkdir -p "$f2"
 
     read -p "Do you want to change shell? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
@@ -67,9 +65,7 @@ install_theme(){
     f4="$HOME/Gruvbox-GTK-Theme"
     f5="$HOME/Marble-shell-theme"
 
-    if [[ ! -d "$f1" ]]; then
-        mkdir -p "$f1"
-    fi
+    mkdir -p "$f1"
 
     read -p "Do you want to install Collid-gtk-theme (yellow gruvbox)? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
@@ -149,9 +145,7 @@ install_fonts(){
     f1="$HOME/.local/share/fonts"
     f2="$HOME/nerd-fonts"
 
-    if [[ ! -d "$f1" ]]; then
-        mkdir -p "$f1"
-    fi
+    mkdir -p "$f1"
 
     if [[ ! -d "$f2" ]]; then
         cd "$HOME" && git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
@@ -235,9 +229,7 @@ install_icons(){
     f1="$HOME/.icons"
     f2="$HOME/Colloid-icon-theme"
 
-    if [[ ! -d "$f1" ]]; then
-        mkdir -p "$f1"
-    fi
+    mkdir -p "$f1"
 
     if [[ ! -d "$f2" ]]; then
         git clone https://github.com/vinceliuice/Colloid-icon-theme.git
