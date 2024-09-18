@@ -29,6 +29,9 @@ while true; do
         "7")
         reboot
         ;;
+        "8")
+        install_cursors && Setup && show_options
+        ;;
         "q")
         echo "stopping the script ..."
         break
