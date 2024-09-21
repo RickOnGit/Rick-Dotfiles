@@ -43,6 +43,12 @@ install_and_customize_shell (){
         Setup
     fi
 
+    read -p "Do you want to inatall a custom starship prompt? (y/n): " ans
+    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then   
+        starship preset gruvbox-rainbow -o ~/.config/starship.toml
+        Setup
+    fi
+
     read -p "Do you want to install terminal themes? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         bash -c "$(wget -qO- https://git.io/vQgMr)"
@@ -189,9 +195,9 @@ install_pkgs () {
 }
 
 extra_programs() {
-    sudo dnf install cmatrix cbonsai cava btop gedit steam vlc audacity gnome-tweaks 
+    sudo dnf install cmatrix cbonsai cava btop gedit steam vlc audacity gnome-tweaks putty pulseaudio 
     cargo install tock  
-    flatpak install flathub md.obsidian.Obsidian com.obsproject.Studio org.pulseaudio.pavucontrol com.vscodium.codium com.mattjakeman.ExtensionManager com.dropbox.Client
+    flatpak install flathub md.obsidian.Obsidian com.obsproject.Studio com.vscodium.codium com.mattjakeman.ExtensionManager com.dropbox.Client
 
     Setup
     read -p "Do you want to install gamemode? (y/n): " ans
@@ -249,6 +255,24 @@ install_icons(){
     fi
 }
 
+install_cursors() {
+    f1="$HOME/.icons"
+    f2="$HOME/Rick-Dotfiles/VirtualDE/Pointers"
+    mkdir -p "$f1"
+
+    while true; do
+        echo -e "Install your preferred cursor! (type 'q' for quitting):\n "
+        ls "$f2"
+            read input
+            if [[ "$input" == "q" ]]; then
+                echo "done"
+                break
+            fi
+        eval cp "$f2"/"$input" "$f1"
+    done
+}
+
 show_options(){
     cat "$HOME"/Rick-Dotfiles/VirtualDE/Installation/options.txt
 }
+
