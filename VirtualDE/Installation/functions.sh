@@ -148,8 +148,9 @@ install_theme(){
 }
 
 install_fonts(){
+    Setup
     f1="$HOME/.local/share/fonts"
-    f2="$HOME/nerd-fonts"
+    f2="$HOME/nerd-fonts/patched-fonts"
 
     mkdir -p "$f1"
 
@@ -157,16 +158,21 @@ install_fonts(){
         cd "$HOME" && git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
     fi
 
-    cd "$f2" && ls && echo -e"\n"
-    echo -e "Insert a specific font you want, use * for all (type q for quitting):\n"
+    cd "$f2" && echo -e "\n"
     while true; do
-        read input
+    echo -e "Insert a specific font you want, use * for all (type q for quitting):\n"
+    	echo -e "\nAvaiable fonts:\n"
+    	ls
+    	echo -e "\n"
+    	read -p "Chosed font/s: " input
 
         if [[ "$input" == "q" ]]; then
-            echo "done"
+            echo "end function"
             break
         fi
-        eval cp -f -r "$f2"/patched-fonts/"$input" "$f1"
+
+        eval cp -f -r "$f2"/"$input" "$f1"
+        echo -e "\ndone\n"
     done
     Setup       
 }
