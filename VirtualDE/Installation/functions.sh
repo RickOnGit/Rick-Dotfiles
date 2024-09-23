@@ -183,15 +183,14 @@ Setup(){
 }
 
 install_pkgs () {
-    sudo dnf groupinstall "Development Tools" "Development Libraries" \
-    && sudo dnf install python3 python3-devel python3-pip \
+    sudo dnf install python3 python3-devel python3-pip \
     java-17-openjdk java-17-openjdk-devel \
     cargo rust \
     alsa-lib-devel fftw3-devel pulseaudio-libs-devel libtool autoconf-archive iniparser-devel pkgconf \
     gtk-murrine-engine \
     kernel-headers kernel-devel kernel-core dkms \
     meson systemd-devel pkg-config git dbus-devel \
-    ostree libappstream-glib libgtop2-devel lm_sensors
+    ostree libappstream-glib libgtop2-devel lm_sensors make
 }
 
 extra_programs() {
@@ -268,7 +267,7 @@ install_cursors() {
                 echo "done"
                 break
             fi
-        eval cp "$f2"/"$input" "$f1"
+        eval cp -r "$f2"/"$input" "$f1"
     done
 }
 
