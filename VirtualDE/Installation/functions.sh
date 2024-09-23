@@ -196,11 +196,11 @@ install_pkgs () {
     gtk-murrine-engine \
     kernel-headers kernel-devel kernel-core dkms \
     meson systemd-devel pkg-config git dbus-devel \
-    ostree libappstream-glib libgtop2-devel lm_sensors make
+    ostree libappstream-glib libgtop2-devel lm_sensors --skip-broken
 }
 
 extra_programs() {
-    sudo dnf install cmatrix cbonsai cava btop gedit steam vlc audacity gnome-tweaks putty pulseaudio 
+    sudo dnf install cmatrix cbonsai cava btop gedit steam vlc audacity gnome-tweaks putty pulseaudio --allowerasing --skip-broken
     cargo install tock  
     flatpak install flathub md.obsidian.Obsidian com.obsproject.Studio com.vscodium.codium com.mattjakeman.ExtensionManager com.dropbox.Client
 
@@ -208,18 +208,25 @@ extra_programs() {
     read -p "Do you want to install gamemode? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         install_gamemode
+        Setup
     fi
 
-    Setup
+    
     read -p "Do you want to install Pop-OS shell tiling? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         install_popOStiling
+        Setup
+    fi
+
+    read -p "Do you want to install tlp? (y/n): " ans
+    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
+        install_tlp
     fi
 }
 
 install_gamemode() {
     f1="$HOME/gamemode"
-    sudo dnf install cmake g++
+    sudo dnf install cmake g++ make
     if [[ ! -d "$f1" ]]; then
         git clone https://github.com/FeralInteractive/gamemode.git
         cd "$f1"
