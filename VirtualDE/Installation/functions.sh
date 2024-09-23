@@ -277,6 +277,7 @@ install_tlp() {
 	sudo systemctl stop power-profiles-daemon
 	sudo systemctl enable tlp 
 	sudo systemctl start tlp
+
 }
 show_options(){
     cat "$HOME"/Rick-Dotfiles/VirtualDE/Installation/options.txt
