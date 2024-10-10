@@ -1,11 +1,10 @@
 {
     "$schema": "https:github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
-        //"source": "~/.config/fastfetch/pokeart.txt",
-	"source": "~/.config/fastfetch/fedoralogo.txt",
+	"source": "~/.config/fastfetch/customlogo.txt",
 	"position": "left",
 	"padding": {
-            "top": 0,
+            "top": 1,
             "bottom": 0,
             "left": 0,    
             "right": 1   

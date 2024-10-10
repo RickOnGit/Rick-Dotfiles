@@ -10,6 +10,6 @@ LOGO="\033[33m
    '''''
 \033[0m"
 
-echo -e "$LOGO" > ~/.config/fastfetch/fedoralogo.txt
+echo -e "$LOGO" > ~/.config/fastfetch/customlogo.txt
 
 fastfetch --pipe false
