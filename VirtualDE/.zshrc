@@ -114,6 +114,6 @@ alias fastfetch='~/.config/fastfetch/printfedoralogo.sh'
 fastfetch --pipe false
 
 #alias fastfetch='~/.config/fastfetch/printgunlogo.sh'
-fastfetch --pipe false
+#fastfetch --pipe false
 
 eval "$(starship init zsh)"
