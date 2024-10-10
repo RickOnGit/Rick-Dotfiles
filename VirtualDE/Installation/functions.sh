@@ -2,7 +2,7 @@
 update_system() {
     sudo dnf update -y && sudo dnf upgrade -y
     Setup
-    read -p -e "Do you wanto to install extra pakages?: " ans
+    read -e -p "Do you wanto to install extra pakages?: " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         install_pkgs
     fi
@@ -23,25 +23,27 @@ install_and_customize_shell (){
     f2="$HOME/.config/fastfetch"
     f3="$HOME/pokemon-colorscripts"
 
-    read -p -e "Do you want to change shell (if just installed type y)? (y/n): " ans
-    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-        chsh -s $(which zsh) && Setup
-    fi
-    read -p -e "Do you want to install shell && tools? (y/n): " ans
+    
+    read -e -p "Do you want to install shell && tools? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         install_shell && Setup
     fi
 
+    read -e -p "Do you want to change shell (if just installed type y)? (y/n): " ans
+    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
+        chsh -s $(which zsh) && Setup
+    fi
+
     mkdir -p "$f2"
     
-    read -p -e "Do you want to customize fastfetch? (y/n): " ans
+    read -e -p "Do you want to customize fastfetch? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         cp -f "$f1"/.zshrc "$HOME"/.zshrc   
         cp -f "$f1"/FastFetch/* "$f2"    
         Setup
     fi
 
-    read -p -e "Do you want to install a starship preset? (y/n): " ans
+    read -e -p "Do you want to install a starship preset? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
            gnome-terminal -- bash -c 'xdg-open https://starship.rs/presets/; exec bash'
            echo -e "\nPaste the configuration command for the chosen preset: "
@@ -50,13 +52,13 @@ install_and_customize_shell (){
         Setup
     fi
 
-    read -p -e "Do you want to install terminal themes? (y/n): " ans
+    read -e -p "Do you want to install terminal themes? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         bash -c "$(wget -qO- https://git.io/vQgMr)"
         Setup
     fi
     
-    read -p -e "Do you want to install pokemon-colorscripts? (y/n): " ans
+    read -e -p "Do you want to install pokemon-colorscripts? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" && ! -d "$f3" ]]; then
         git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git  
         cd pokemon-colorscripts
@@ -74,7 +76,7 @@ install_theme(){
 
     mkdir -p "$f1"
 
-    read -p -e "Do you want to install Collid-gtk-theme (yellow gruvbox)? (y/n): " ans
+    read -e -p "Do you want to install Collid-gtk-theme (yellow gruvbox)? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         if [[ ! -d "$f2" ]]; then
             cd "$HOME"
@@ -96,7 +98,7 @@ install_theme(){
     fi
 
     Setup
-    read -p -e "Do you want to install flatpak theming? (y/n): " ans  
+    read -e -p "Do you want to install flatpak theming? (y/n): " ans  
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         if [[ ! -d "$f3" ]]; then
             git clone https://github.com/refi64/stylepak.git
@@ -107,7 +109,7 @@ install_theme(){
     fi
     
     Setup
-    read -p -e "Do you want to install Fausto-Korpsvart Gruvbox-GTK-Theme? (y/n): " ans
+    read -e -p "Do you want to install Fausto-Korpsvart Gruvbox-GTK-Theme? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         if [[ ! -d "$f4" ]]; then
             git clone https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme.git
@@ -128,7 +130,7 @@ install_theme(){
     fi
 
     Setup
-    read -p -e "Do you want to install Marble-shell-theme? (y/n): " ans
+    read -e -p "Do you want to install Marble-shell-theme? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         if [[ ! -d "$f5" ]]; then
             git clone https://github.com/imarkoff/Marble-shell-theme.git
@@ -138,7 +140,7 @@ install_theme(){
         cd "$f5" && python install.py -h && echo -e "\n"
         while true; do
             echo -e "Install your custom Marble-shell-theme! (type 'q' for quitting):\n"
-            read -p -e input
+            read -e -p input
             if [[ "$input" == "q" ]]; then
                 echo "done"
                 break
@@ -203,19 +205,19 @@ extra_programs() {
     flatpak install flathub md.obsidian.Obsidian com.obsproject.Studio com.vscodium.codium com.mattjakeman.ExtensionManager com.dropbox.Client
 
     Setup
-    read -p -e "Do you want to install gamemode and or Steam? (y/n): " ans
+    read -e -p "Do you want to install gamemode and or Steam? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         install_gamemode; sudo dnf install steam
         Setup
     fi
 
-    read -p -e "Do you want to install Pop-OS shell tiling? (y/n): " ans
+    read -e -p "Do you want to install Pop-OS shell tiling? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         install_popOStiling
         Setup
     fi
 
-    read -p -e "Do you want to install tlp? (y/n): " ans
+    read -e -p "Do you want to install tlp? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         install_tlp
     fi
@@ -254,7 +256,7 @@ install_icons(){
 
         while true; do
             echo -e "Install your custom Colloid-icon-theme! (type 'q' for quitting):\n "
-            read input
+            read -e -p input
             if [[ "$input" == "q" ]]; then
                 echo "done"
                 break
@@ -272,7 +274,7 @@ install_cursors() {
     while true; do
         echo -e "Install your preferred cursor! (type 'q' for quitting):\n "
         ls "$f2"
-            read input
+            read -e -p input
             if [[ "$input" == "q" ]]; then
                 echo "done"
                 break
