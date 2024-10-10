@@ -34,18 +34,17 @@ install_and_customize_shell (){
 
     mkdir -p "$f2"
     
-    read -p -e "Do you want to customize fastfetch && starship? (y/n): " ans
+    read -p -e "Do you want to customize fastfetch? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         cp -f "$f1"/.zshrc "$HOME"/.zshrc   
         cp -f "$f1"/FastFetch/* "$f2"    
-        starship preset gruvbox-rainbow -o ~/.config/starship.toml
         Setup
     fi
 
     read -p -e "Do you want to install a starship preset? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-           xdg-open https://starship.rs/presets/
-           echo -e "\nClose the browser and paste the configuration command for the chosen preset: "
+           gnome-terminal -- bash -c 'xdg-open https://starship.rs/presets/; exec bash'
+           echo -e "\nPaste the configuration command for the chosen preset: "
            read input
            eval "$input"
         Setup
