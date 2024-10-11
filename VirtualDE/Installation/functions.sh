@@ -28,7 +28,7 @@ install_and_customize_shell (){
     echo -e "\n";read -e -p "Do you want to install shell && tools? (y/n) " ans
      
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-        install_shell &> /dev/null &
+        install_shell > /dev/null 2>&1
     fi
 
     echo -e "\n";read -e -p "Do you want to change shell (if just installed type y)? (y/n) " ans
@@ -48,9 +48,9 @@ install_and_customize_shell (){
     echo -e "\n";read -e -p "Do you want to install a starship preset? (y/n) " ans
      
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-        xdg-open https://starship.rs/presets/  &> /dev/null &
+        xdg-open https://starship.rs/presets/  > /dev/null 2>&1
         echo -e "\n";read -e -p "Paste the configuration command for the chosen preset: " ans
-        eval "$ans" &> /dev/null &
+        eval "$ans" > /dev/null 2>&1
     fi
 
     echo -e "\n";read -e -p "Do you want to install terminal themes? (y/n) " ans
@@ -62,9 +62,9 @@ install_and_customize_shell (){
     echo -e "\n";read -e -p "Do you want to install pokemon-colorscripts? (y/n) " ans
      
     if [[ "$ans" == "y" || "$ans" == "Y" && ! -d "$f3" ]]; then
-        git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git  &> /dev/null &
+        git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git  > /dev/null 2>&1
         cd pokemon-colorscripts
-        ./install.sh &> /dev/null &
+        ./install.sh > /dev/null 2>&1
     fi
     source ~/.zshrc
 }
@@ -133,7 +133,7 @@ Setup(){
 
     \033[0m"
 
-    clear && cd "$HOME" &&  echo "$LOGO"
+    clear && cd "$HOME" &&  echo -e "$LOGO"
 }
 
 install_pkgs () {
