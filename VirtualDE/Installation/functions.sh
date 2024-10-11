@@ -11,12 +11,12 @@ update_system() {
 }
 
 install_shell() {
-    sudo dnf install fastfetch zsh   
+    sudo dnf install fastfetch zsh > /dev/null 2>&1
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --skip-chsh --unattended
-    curl -sS https://starship.rs/install.sh | sh 
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions  
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting  
-    git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions     
+    curl -sS https://starship.rs/install.sh | sh  > /dev/null 2>&1
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions  > /dev/null 2>&1
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting  > /dev/null 2>&1
+    git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions > /dev/null 2>&1
 }
 
 install_and_customize_shell (){
@@ -28,7 +28,7 @@ install_and_customize_shell (){
     echo -e "\n";read -e -p "Do you want to install shell && tools? (y/n) " ans
      
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-        install_shell > /dev/null 2>&1
+        install_shell
     fi
 
     echo -e "\n";read -e -p "Do you want to change shell (if just installed type y)? (y/n) " ans
