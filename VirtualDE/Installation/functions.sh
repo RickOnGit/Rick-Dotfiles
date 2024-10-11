@@ -24,37 +24,37 @@ install_and_customize_shell (){
     f2="$HOME/.config/fastfetch"
     f3="$HOME/pokemon-colorscripts"
     
-    echo -e "\nDo you want to install shell && tools? (y/n) "; read -e -p ans
+    echo -e "\nDo you want to install shell && tools? (y/n) "; read -p ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         install_shell &> /dev/null &
     fi
 
-    echo -e "\nDo you want to change shell (if just installed type y)? (y/n) "; read -e -p ans
+    echo -e "\nDo you want to change shell (if just installed type y)? (y/n) "; read -p ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         chsh -s $(which zsh)
     fi
 
     mkdir -p "$f2"
     
-    echo -e "\nDo you want to customize fastfetch? (y/n) "; read -e -p ans
+    echo -e "\nDo you want to customize fastfetch? (y/n) "; read -p ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         cp -f "$f1"/.zshrc "$HOME"/.zshrc   
         cp -f "$f1"/FastFetch/* "$f2"    
     fi
 
-    echo -e "\nDo you want to install a starship preset? (y/n) "; read -e -p ans
+    echo -e "\nDo you want to install a starship preset? (y/n) "; read -p ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
            xdg-open https://starship.rs/presets/  &> /dev/null &
            echo -e "\nPaste the configuration command for the chosen preset: "
            eval "$input" &> /dev/null &
     fi
 
-    echo -e "\nDo you want to install terminal themes? (y/n) "; read -e -p ans
+    echo -e "\nDo you want to install terminal themes? (y/n) "; read -p ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         bash -c "$(wget -qO- https://git.io/vQgMr)"
     fi
     
-    echo -e "\nDo you want to install pokemon-colorscripts? (y/n) "; read -e -p ans
+    echo -e "\nDo you want to install pokemon-colorscripts? (y/n) "; read -p ans
     if [[ "$ans" == "y" || "$ans" == "Y" && ! -d "$f3" ]]; then
         git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git  &> /dev/null &
         cd pokemon-colorscripts
