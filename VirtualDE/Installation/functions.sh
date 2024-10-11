@@ -11,10 +11,10 @@ update_system() {
 }
 
 install_shell() {
-    f1= "$HOME/.oh-my-zsh"
+    f1="$HOME/.oh-my-zsh"
     sudo dnf install fastfetch zsh > /dev/null 2>&1
     if [[ ! -d "$f1" ]]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --skip-chsh --unattended
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --skip-chsh --unattended
     fi
     curl -sS https://starship.rs/install.sh | sh  > /dev/null 2>&1
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions  > /dev/null 2>&1
