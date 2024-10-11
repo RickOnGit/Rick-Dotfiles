@@ -50,7 +50,7 @@ install_and_customize_shell (){
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
            xdg-open https://starship.rs/presets/  &> /dev/null &
            echo -e "\nPaste the configuration command for the chosen preset: "
-           eval "$input" &> /dev/null &
+           eval "$ans" &> /dev/null &
     fi
 
     echo -e "\nDo you want to install terminal themes? (y/n) "
