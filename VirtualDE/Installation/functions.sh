@@ -11,7 +11,7 @@ update_system() {
 }
 
 install_shell() {
-    f1= "$HOME/rick/.oh-my-zsh"
+    f1= "$HOME/.oh-my-zsh"
     sudo dnf install fastfetch zsh > /dev/null 2>&1
     if [[ ! -d "$f1" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --skip-chsh --unattended
