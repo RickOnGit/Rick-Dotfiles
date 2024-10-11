@@ -20,48 +20,47 @@ install_shell() {
 }
 
 install_and_customize_shell (){
+    Setup
     f1="$HOME/Rick-Dotfiles/VirtualDE"   
     f2="$HOME/.config/fastfetch"
     f3="$HOME/pokemon-colorscripts"
     
-    echo -e "\nDo you want to install shell && tools? (y/n) "
-    read ans
+    echo -e "\n";read -e -p "Do you want to install shell && tools? (y/n) " ans
+     
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         install_shell &> /dev/null &
     fi
 
-    echo -e "\nDo you want to change shell (if just installed type y)? (y/n) "
-    read ans
+    echo -e "\n";read -e -p "Do you want to change shell (if just installed type y)? (y/n) " ans
+     
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         chsh -s $(which zsh)
     fi
 
     mkdir -p "$f2"
-    
-    echo -e "\nDo you want to customize fastfetch? (y/n) "
-    read ans
+    echo -e "\n";read -e -p "Do you want to customize fastfetch? (y/n) " ans
+     
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         cp -f "$f1"/.zshrc "$HOME"/.zshrc   
         cp -f "$f1"/FastFetch/* "$f2"    
     fi
 
-    echo -e "\nDo you want to install a starship preset? (y/n) "
-    read ans
+    echo -e "\n";read -e -p "Do you want to install a starship preset? (y/n) " ans
+     
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-           xdg-open https://starship.rs/presets/  &> /dev/null &
-           echo -e "\nPaste the configuration command for the chosen preset: "
-           read ans
-           eval "$ans" &> /dev/null &
+        xdg-open https://starship.rs/presets/  &> /dev/null &
+        echo -e "\n";read -e -p "Paste the configuration command for the chosen preset: " ans
+        eval "$ans" &> /dev/null &
     fi
 
-    echo -e "\nDo you want to install terminal themes? (y/n) "
-    read ans
+    echo -e "\n";read -e -p "Do you want to install terminal themes? (y/n) " ans
+     
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         bash -c "$(wget -qO- https://git.io/vQgMr)"
     fi
     
-    echo -e "\nDo you want to install pokemon-colorscripts? (y/n) "
-    read ans
+    echo -e "\n";read -e -p "Do you want to install pokemon-colorscripts? (y/n) " ans
+     
     if [[ "$ans" == "y" || "$ans" == "Y" && ! -d "$f3" ]]; then
         git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git  &> /dev/null &
         cd pokemon-colorscripts
@@ -86,9 +85,9 @@ install_theme(){
         fi
         Setup
 
-        cd "$f5" && python install.py -h && echo -e "\n"
+        cd "$f5" && python install.py -h &&  read -e -p ""
         while true; do
-            echo -e "Install your custom Marble-shell-theme! (type 'q' for quitting):\n"
+             read -e -p "Install your custom Marble-shell-theme! (type 'q' for quitting):"
             read -e -p input
             if [[ "$input" == "q" ]]; then
                 echo "done"
@@ -110,19 +109,19 @@ install_fonts(){
         cd "$HOME" && git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
     fi
 
-    cd "$f2" && echo -e "\n"
+    cd "$f2" &&  read -e -p ""
 
-    echo -e "Insert a specific font you want, use * for all (type q for quitting):\n"
-    echo -e "\nAvaiable fonts:\n"
+     read -e -p "Insert a specific font you want, use * for all (type q for quitting):"
+     read -e -p "Avaiable fonts:"
     ls
-    echo -e "\n"
+     read -e -p ""
     read -e -p "Chosed font/s: " input
     if [[ "$input" == "q" ]]; then
         echo "no font desidered"
         break
     fi
     eval cp -f -r "$f2"/"$input" "$f1"
-    echo -e "\ndone\n"
+     read -e -p "done"
     Setup    
 }
 
@@ -134,7 +133,7 @@ Setup(){
 
     \033[0m"
 
-    clear && cd "$HOME" && echo -e "$LOGO"
+    clear && cd "$HOME" &&  read -e -p "$LOGO"
 }
 
 install_pkgs () {
@@ -201,10 +200,10 @@ install_icons(){
         git clone https://github.com/vinceliuice/Colloid-icon-theme.git
         Setup
         
-        cd Colloid-icon-theme && ./install.sh -h && echo -e "\n"
+        cd Colloid-icon-theme && ./install.sh -h &&  read -e -p ""
 
         while true; do
-            echo -e "Install your custom Colloid-icon-theme! (type 'q' for quitting):\n "
+             read -e -p "Install your custom Colloid-icon-theme! (type 'q' for quitting): "
             read -e -p input
             if [[ "$input" == "q" ]]; then
                 echo "done"
@@ -221,7 +220,7 @@ install_cursors() {
     mkdir -p "$f1"
 
     while true; do
-        echo -e "Install your preferred cursor! (type 'q' for quitting):\n "
+         read -e -p "Install your preferred cursor! (type 'q' for quitting): "
         ls "$f2"
             read -e -p input
             if [[ "$input" == "q" ]]; then
