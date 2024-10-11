@@ -50,6 +50,7 @@ install_and_customize_shell (){
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
            xdg-open https://starship.rs/presets/  &> /dev/null &
            echo -e "\nPaste the configuration command for the chosen preset: "
+           read ans
            eval "$ans" &> /dev/null &
     fi
 
