@@ -1,4 +1,6 @@
 #!/bin/bash
+source ./themes.sh
+
 update_system() {
     sudo dnf update -y && sudo dnf upgrade -y
     Setup
@@ -60,8 +62,6 @@ install_and_customize_shell (){
     fi
     source ~/.zshrc
 }
-
-source ./themes.sh
 
 install_theme(){
     f1="$HOME/.themes"
