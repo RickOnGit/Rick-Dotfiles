@@ -133,7 +133,7 @@ Setup(){
 
     \033[0m"
 
-    clear && cd "$HOME" &&  read -e -p "$LOGO"
+    clear && cd "$HOME" &&  echo "$LOGO"
 }
 
 install_pkgs () {

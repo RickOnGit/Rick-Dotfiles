@@ -1,12 +1,10 @@
 #!/bin/bash
-
 source ./functions.sh
 
 Setup && show_options
 
 while true; do
-    echo -e "\nChose an option:\n"
-    read opt 
+    echo -e "\n";read -e -p "Chose an option:" opt;echo -e "\n"
     case $opt in 
         "1")
         update_system && Setup && show_options 
