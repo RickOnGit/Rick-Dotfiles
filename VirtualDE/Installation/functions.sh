@@ -189,7 +189,7 @@ install_gamemode() {
     fi
 }
 
-install_popOStiling(){
+popOStiling(){
     f2="$HOME/shell"
 
     if [[ ! -d "$f2" ]]; then
