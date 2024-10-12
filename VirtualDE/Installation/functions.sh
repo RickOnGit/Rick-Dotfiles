@@ -39,7 +39,7 @@ install_and_customize_shell (){
         install_shell
     fi
 
-    echo -e "\n";read -e -p "Do you want to change shell (if just installed type y)? (y/n) " ans
+    echo -e "\n";read -e -p "Do you want to change shell (if just installed type y)? (y/n): " ans
      
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         chsh -s $(which zsh)
