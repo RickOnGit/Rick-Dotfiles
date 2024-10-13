@@ -19,7 +19,7 @@ clone_add_blacklist() {
     fi
 }
 
-Install_rtl88x2bu_git() {
+install_rtl88x2bu_git() {
     sudo su
     dkms autoinstall
     echo -e "\nEnable usb3 support? (y/n): "

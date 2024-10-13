@@ -28,6 +28,12 @@ while true; do
         install_and_customize_shell && Setup && show_options
         ;;
         "8")
+        clone_add_blacklist
+        ;;
+        "9")
+        install_rtl88x2bu_git && Setup && show_options
+        ;;
+        "10")
         reboot
         ;;
         "q")
