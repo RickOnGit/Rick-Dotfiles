@@ -1,6 +1,6 @@
 #!/bin/bash
 source ./functions.sh
-source ./'rtl88x2bu-driver.sh'
+source ./rtl88x2bu.sh
 
 Setup && show_options
 
