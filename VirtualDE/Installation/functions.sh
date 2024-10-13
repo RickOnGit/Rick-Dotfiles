@@ -13,13 +13,13 @@ install_shell() {
     f1="$HOME/.oh-my-zsh"
     file1="/usr/local/bin/starship"
     
-    sudo dnf install fastfetch zsh > /dev/null 2>&1
+    sudo dnf install fastfetch zsh -y > /dev/null 2>&1
     if [[ ! -d "$f1" ]]; then
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --skip-chsh --unattended
     fi
 
     if [[ ! -f "$file1" ]]; then
-        curl -sS https://starship.rs/install.sh | sh
+        curl -sS https://starship.rs/install.sh | sh -y
     fi
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions  > /dev/null 2>&1
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting  > /dev/null 2>&1
