@@ -22,11 +22,12 @@ colloidgtktheme() {
     echo -e -p "\nDo you want to install flatpak theming? (y/n): "; read -e -p ans 
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         if [[ ! -d "$f3" ]]; then
-            git clone https://github.com/refi64/stylepak.git &> /dev/null &
+            git clone https://github.com/refi64/stylepak.git > /dev/null 2>&1
         fi
 
         cd "$f3"
-        ./stylepak install-system &> /dev/null &; ./stylepak install-user &> /dev/null &
+        ./stylepak install-system > /dev/null 2>&1
+        ./stylepak install-user > /dev/null 2>&1
         echo -e "\nDone"
     fi
 }
@@ -46,5 +47,4 @@ gruvboxgtktheme() {
 
     echo -e "\nInstall your gruvbox-theme: "; read -e -p ans
     eval "$ans"  &> /dev/null &
-    fi
 }

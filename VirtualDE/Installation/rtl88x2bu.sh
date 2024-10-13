@@ -1,7 +1,9 @@
+source ./functions.sh
 clone_add_blacklist() {
-    sudo dnf install kernel-devel kernel-headers dkms; clear
-    echo -e "\nDownload and adding the module? (y/n): "
-    read -e -p ans; echo -e "\n"
+    Setup
+    echo -e "\n"
+    read -e -p "Download and adding the module? (y/n): " ans
+    echo -e "\n"
 
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         sudo su
@@ -9,10 +11,11 @@ clone_add_blacklist() {
         sed -i 's/PACKAGE_VERSION="@PKGVER@"/PACKAGE_VERSION="git"/g' /usr/src/rtl88x2bu-git/dkms.conf
         dkms add -m rtl88x2bu -v git
     
-        echo -e "\nReboot and blacklisting the installed module? (y/n): "
-        read -e -p ans; echo -e "\n"
+        echo -e "\n"
+        read -e -p "Reboot and blacklisting the installed module? (y/n): " ans
+        echo -e "\n"
 
-        if [[ "$ans" == "y" || "$ans" == "Y"]]; then
+        if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
             echo "blacklist rtw88_8822bu" > /etc/modprobe.d/rtw8822bu.conf
             reboot
         fi
@@ -20,11 +23,12 @@ clone_add_blacklist() {
 }
 
 install_rtl88x2bu_git() {
-    sudo su
+    Setup; sudo su
     dkms autoinstall
-    echo -e "\nEnable usb3 support? (y/n): "
-    read -e -p ans ; echo -e "\n"
-    if [[ "$ans" == "y" || "$ans" == "Y"]]; then
+    echo -e "\n"
+    read -e -p "Enable usb3 support? (y/n): " ans
+    echo -e "\n"
+    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         modprobe 88x2bu rtw_switch_usb_mode=1
     fi
 }

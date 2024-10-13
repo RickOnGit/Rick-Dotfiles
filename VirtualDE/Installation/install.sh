@@ -1,7 +1,6 @@
 source ./rtl88x2bu.sh 
 source ./functions.sh
 
-
 Setup && show_options
 
 while true; do
@@ -42,7 +41,7 @@ while true; do
         break
         ;;
         "*")
-        echo "Invalid option, retry..."
+        echo -e "\nInvalid option, retry...\n"
         ;;
     esac
 done 
