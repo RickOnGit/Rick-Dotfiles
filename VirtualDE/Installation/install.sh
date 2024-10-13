@@ -1,5 +1,6 @@
-#!/bin/bash
-source ./rtl88x2bu.sh ./functions.sh
+
+source ./rtl88x2bu.sh 
+source ./functions.sh
 
 
 Setup && show_options
