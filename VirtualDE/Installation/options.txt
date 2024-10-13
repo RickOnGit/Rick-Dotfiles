@@ -16,6 +16,9 @@ Insert an option listed below:
 
 7- Install zsh shell and relative prompt like starhip, tools like fastfetch with my personal configuration but you can customize it by your own taste!
 
-8- Reboot the system to apply changes
+8- Install andblacklist rtl88x2bu driver
+9- install the driver trough dkms
+
+10- reboot
 
 q- to quit the script
