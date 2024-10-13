@@ -10,8 +10,8 @@ update_system() {
 }
 
 install_shell() {
-    f1="$HOME/.oh-my-zsh"
-    file1="/usr/local/bin/starship"
+    local f1="$HOME/.oh-my-zsh"
+    local file1="/usr/local/bin/starship"
     
     sudo dnf install fastfetch zsh -y > /dev/null 2>&1
     if [[ ! -d "$f1" ]]; then
@@ -28,9 +28,9 @@ install_shell() {
 
 install_and_customize_shell (){
     Setup
-    f1="$HOME/Rick-Dotfiles/VirtualDE"   
-    f2="$HOME/.config/fastfetch"
-    f3="$HOME/pokemon-colorscripts"
+    local f1="$HOME/Rick-Dotfiles/VirtualDE"   
+    local f2="$HOME/.config/fastfetch"
+    local f3="$HOME/pokemon-colorscripts"
     
     echo -e "\n";read -e -p "Do you want to install shell && tools? (y/n) " ans
      
@@ -113,8 +113,8 @@ install_theme(){
 
 install_fonts(){
     Setup
-    f1="$HOME/.local/share/fonts"
-    f2="$HOME/nerd-fonts/patched-fonts"
+    local f1="$HOME/.local/share/fonts"
+    local f2="$HOME/nerd-fonts/patched-fonts"
 
     mkdir -p "$f1"
 
@@ -195,7 +195,7 @@ install_gamemode() {
 }
 
 popOStiling(){
-    f2="$HOME/shell"
+    local f2="$HOME/shell"
 
     if [[ ! -d "$f2" ]]; then
         git clone https://github.com/pop-os/shell.git
@@ -204,8 +204,8 @@ popOStiling(){
 }
 
 install_icons(){
-    f1="$HOME/.icons"
-    f2="$HOME/Colloid-icon-theme"
+    local f1="$HOME/.icons"
+    local f2="$HOME/Colloid-icon-theme"
 
     mkdir -p "$f1"
 
@@ -228,8 +228,8 @@ install_icons(){
 }
 
 install_cursors() {
-    f1="$HOME/.icons"
-    f2="$HOME/Rick-Dotfiles/VirtualDE/Pointers"
+    local f1="$HOME/.icons"
+    local f2="$HOME/Rick-Dotfiles/VirtualDE/Pointers"
     mkdir -p "$f1"
 
     while true; do
