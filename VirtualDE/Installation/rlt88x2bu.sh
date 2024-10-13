@@ -1,12 +1,13 @@
 clone_add_blacklist() {
-    sudo su; install kernel-devel kernel-headers dkms; clear
+    sudo dnf install kernel-devel kernel-headers dkms; clear
     echo -e "\nDownload and adding the module? (y/n): "
     read -e -p ans; echo -e "\n"
 
-    if [[ "$ans" == "y" || "$ans" == "Y"]]; then
+    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
+        sudo su
         git clone "https://github.com/RinCat/RTL88x2BU-Linux-Driver.git" /usr/src/rtl88x2bu-git
         sed -i 's/PACKAGE_VERSION="@PKGVER@"/PACKAGE_VERSION="git"/g' /usr/src/rtl88x2bu-git/dkms.conf
-        dkms add -m rtl88x2bu -v gi
+        dkms add -m rtl88x2bu -v git
     
         echo -e "\nReboot and blacklisting the installed module? (y/n): "
         read -e -p ans; echo -e "\n"
