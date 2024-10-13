@@ -1,12 +1,11 @@
-#!/bin/bash
 source ./themes.sh
 
 update_system() {
-    sudo dnf update -y && sudo dnf upgrade -y
+    sudo dnf update -y > /dev/null 2>&1
     Setup
     read -e -p "Do you want to install extra pakages?: " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-        install_pkgs 
+        install_pkgs > /dev/null 2>&1
     fi
 }
 
@@ -80,10 +79,16 @@ install_and_customize_shell (){
 install_theme(){
     f1="$HOME/.themes"
     mkdir -p "$f1"
-
-    colloidgtktheme #implementazione delle varie funzioni per installare i temi
     
-    gruvboxgtktheme
+    read -e -p "Do you want to install Colloid gtk theme? (y/n): " ans
+    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
+        colloidgtktheme #implementazione delle varie funzioni per installare i temi
+    fi
+
+    read -e -p "Do you want to install gruvbox gtk theme? (y/n): " ans
+    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
+        gruvboxgtktheme
+    fi
     #finire implementazione marble shell
     Setup
     read -e -p "Do you want to install Marble-shell-theme? (y/n): " ans
