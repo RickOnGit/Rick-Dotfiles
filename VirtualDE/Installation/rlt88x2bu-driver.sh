@@ -1,4 +1,4 @@
-clone_and_blacklist() {
+clone_add_blacklist() {
     sudo su; install kernel-devel kernel-headers dkms; clear
     echo -e "\nDownload and adding the module? (y/n): "
     read -e -p ans; echo -e "\n"
