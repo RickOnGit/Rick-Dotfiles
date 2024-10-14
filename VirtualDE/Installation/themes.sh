@@ -36,7 +36,7 @@ gruvboxgtktheme() {
         git clone https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme.git > /dev/null 2>&1
     fi
 
-    cd "$f4"; echo -e "\n" ;read -e -p "Take a look at the theme? (y/n) " ans
+    cd "$f4/themes"; echo -e "\n" ;read -e -p "Take a look at the theme? (y/n) " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         xdg-open https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme > /dev/null 2>&1
     fi
