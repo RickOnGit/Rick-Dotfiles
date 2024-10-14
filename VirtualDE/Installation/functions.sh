@@ -131,20 +131,17 @@ install_fonts(){
         cd "$HOME" && git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
     fi
 
-    cd "$f2" &&  read -e -p ""
+    cd "$f2" && echo -e "\nAvaiable fonts:\n"
+    ls; echo "\n"
+    read -e -p "Insert a specific font you want, (use * for all) (q for quitting)" ans
 
-     read -e -p "Insert a specific font you want, use * for all (type q for quitting):"
-     read -e -p "Avaiable fonts:"
-    ls
-     read -e -p ""
-    read -e -p "Chosed font/s: " input
-    if [[ "$input" == "q" ]]; then
+    if [[ "$ans" == "q" ]]; then
         echo "no font desidered"
         break
     fi
-    eval cp -f -r "$f2"/"$input" "$f1"
-     read -e -p "done"
-    Setup    
+
+    eval cp -f -r "$f2"/"$ans" "$f1"
+    read -e -p "done"
 }
 
 Setup(){
