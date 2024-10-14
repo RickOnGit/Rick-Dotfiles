@@ -31,6 +31,7 @@ install_and_customize_shell (){
     local f1="$HOME/Rick-Dotfiles/VirtualDE"   
     local f2="$HOME/.config/fastfetch"
     local f3="$HOME/pokemon-colorscripts"
+    local f4="$HOME/.config"
     
     echo -e "\n";read -e -p "Do you want to install shell && tools? (y/n) " ans
      
@@ -55,11 +56,19 @@ install_and_customize_shell (){
     echo -e "\n";read -e -p "Do you want to install a starship preset? (y/n) " ans
      
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-        xdg-open https://starship.rs/presets/  > /dev/null 2>&1
-        echo -e "\n";read -e -p "Paste the configuration command for the chosen preset: " ans
+        xdg-open https://starship.rs/presets/ > /dev/null 2>&1
+        echo -e "\n"
+        read -e -p "Paste the configuration command for the chosen preset: " ans
         eval "$ans" > /dev/null 2>&1
+    else
+        echo -e "\n"
+        read -e -p "Do you want to install my custom preset (y/n)? " ans
+        if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
+            cp starship.toml "$f4"
+            cp lsd "$f4"
+        fi
     fi
-
+       
     echo -e "\n";read -e -p "Do you want to install terminal themes? (y/n) " ans
      
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
@@ -161,8 +170,8 @@ install_pkgs () {
 }
 
 extra_programs() {
-    sudo dnf install cmatrix cbonsai cava btop gedit vlc audacity gnome-tweaks pulseaudio --allowerasing --skip-broken
-    cargo install tock  
+    sudo dnf install cmatrix cbonsai cava btop gedit vlc audacity gnome-tweaks pulseaudio lsd  --allowerasing --skip-broken
+    cargo install tock vivid
     flatpak install flathub md.obsidian.Obsidian com.obsproject.Studio com.vscodium.codium com.mattjakeman.ExtensionManager com.dropbox.Client
 
     Setup
@@ -174,7 +183,7 @@ extra_programs() {
 
     read -e -p "Do you want to install Pop-OS shell tiling? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-        install_popOStiling
+        popOStiling
         Setup
     fi
 
