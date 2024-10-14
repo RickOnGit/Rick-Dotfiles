@@ -86,33 +86,31 @@ install_and_customize_shell (){
 }
 
 install_theme(){
+    Setup
     f1="$HOME/.themes"
     mkdir -p "$f1"
     
-    read -e -p "Do you want to install Colloid gtk theme? (y/n): " ans
+    echo -e "\n"; read -e -p "Do you want to install Colloid gtk theme? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         colloidgtktheme #implementazione delle varie funzioni per installare i temi
-    fi
-
-    read -e -p "Do you want to install gruvbox gtk theme? (y/n): " ans
+    fi  
+    echo -e "\n"; read -e -p "Do you want to install gruvbox gtk theme? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         gruvboxgtktheme
     fi
     #finire implementazione marble shell
-    Setup
-    read -e -p "Do you want to install Marble-shell-theme? (y/n): " ans
+    echo -e "\n"; read -e -p "Do you want to install Marble-shell-theme? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         if [[ ! -d "$f5" ]]; then
             git clone https://github.com/imarkoff/Marble-shell-theme.git
         fi
         Setup
 
-        cd "$f5" && python install.py -h &&  read -e -p ""
+        cd "$f5"; python install.py -h; echo -e "\n"
         while true; do
-             read -e -p "Install your custom Marble-shell-theme! (type 'q' for quitting):"
-            read -e -p input
+            echo -e "\n"; read -e -p "Install your custom Marble-shell-theme! (type 'q' for quitting): " ans
             if [[ "$input" == "q" ]]; then
-                echo "done"
+                echo -e "\nDone"
                 break
             fi
         eval "$input"
@@ -132,8 +130,8 @@ install_fonts(){
     fi
 
     cd "$f2" && echo -e "\nAvaiable fonts:\n"
-    ls; echo "\n"
-    read -e -p "Insert a specific font you want, (use * for all) (q for quitting)" ans
+    ls; echo -e "\n"
+    read -e -p "Insert a specific font you want, (use * for all) (q for quitting): " ans
 
     if [[ "$ans" == "q" ]]; then
         echo "no font desidered"
@@ -141,7 +139,7 @@ install_fonts(){
     fi
 
     eval cp -f -r "$f2"/"$ans" "$f1"
-    read -e -p "done"
+    echo -e "\nDone!"
 }
 
 Setup(){

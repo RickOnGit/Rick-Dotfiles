@@ -9,17 +9,15 @@ colloidgtktheme() {
         git clone https://github.com/vinceliuice/Colloid-gtk-theme.git &> /dev/null &
     fi
 
-    cd "$f2"; echo -e "\nTake a look at the theme? (y/n)"; read -e -p ans
+    cd "$f2"; echo -e "\n"; read -e -p "Take a look at the theme? (y/n) " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-        set +m
-            xdg-open https://github.com/vinceliuice/Colloid-gtk-theme &> /dev/null &
-        set +m
+        xdg-open https://github.com/vinceliuice/Colloid-gtk-theme &> /dev/null &
     fi
 
-    echo -e "\nInstall your custom Colloid-theme: "; read -e -p ans
+    echo -e "\n";read -e -p "Install your custom Colloid-theme: " ans
     eval "$ans" &> /dev/null &
 
-    echo -e -p "\nDo you want to install flatpak theming? (y/n): "; read -e -p ans 
+    echo -e"\n" ; read -e -p "Do you want to install flatpak theming? (y/n) " ans 
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
         if [[ ! -d "$f3" ]]; then
             git clone https://github.com/refi64/stylepak.git > /dev/null 2>&1
@@ -38,13 +36,10 @@ gruvboxgtktheme() {
         git clone https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme.git &> /dev/null &
     fi
 
-    cd "$f4"; echo -e "\nTake a look at the theme? (y/n)"; read -e -p ans
+    cd "$f4"; echo -e "\n" ;read -e -p "Take a look at the theme? (y/n) " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-        set +m
-            xdg-open https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme &> /dev/null &
-        set +m
+        xdg-open https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme &> /dev/null &
     fi
-
-    echo -e "\nInstall your gruvbox-theme: "; read -e -p ans
+    echo -e "\n" ; read -e -p "Install your gruvbox-theme: " ans
     eval "$ans"  &> /dev/null &
 }
