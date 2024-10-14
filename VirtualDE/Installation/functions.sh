@@ -87,7 +87,7 @@ install_and_customize_shell (){
 
 install_theme(){
     Setup
-    f1="$HOME/.themes"
+    local f1="$HOME/.themes"
     mkdir -p "$f1"
     
     echo -e "\n"; read -e -p "Do you want to install Colloid gtk theme? (y/n): " ans

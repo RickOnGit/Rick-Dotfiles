@@ -1,7 +1,7 @@
-f2="$HOME/Colloid-gtk-theme"
-f3="$HOME/stylepak"
-f4="$HOME/Gruvbox-GTK-Theme"
-f5="$HOME/Marble-shell-theme"
+local f2="$HOME/Colloid-gtk-theme"
+local f3="$HOME/stylepak"
+local f4="$HOME/Gruvbox-GTK-Theme"
+local f5="$HOME/Marble-shell-theme"
 
 colloidgtktheme() {
     cd "$HOME"
@@ -33,13 +33,13 @@ colloidgtktheme() {
 gruvboxgtktheme() {
     cd "$HOME"
     if [[ ! -d "$f4" ]]; then
-        git clone https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme.git &> /dev/null &
+        git clone https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme.git > /dev/null 2>&1
     fi
 
     cd "$f4"; echo -e "\n" ;read -e -p "Take a look at the theme? (y/n) " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-        xdg-open https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme &> /dev/null &
+        xdg-open https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme > /dev/null 2>&1
     fi
     echo -e "\n" ; read -e -p "Install your gruvbox-theme: " ans
-    eval "$ans"  &> /dev/null &
+    eval "$ans"  > /dev/null 2>&1
 }
