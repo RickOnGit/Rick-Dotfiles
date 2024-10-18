@@ -1,4 +1,3 @@
-source ./rtl88x2bu.sh 
 source ./functions.sh
 
 Setup && show_options
@@ -26,12 +25,6 @@ while true; do
         ;;
         "7")
         install_and_customize_shell && Setup && show_options
-        ;;
-        "8")
-        clone_add_blacklist
-        ;;
-        "9")
-        install_rtl88x2bu_git && Setup && show_options
         ;;
         "10")
         reboot

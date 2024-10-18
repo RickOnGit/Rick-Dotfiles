@@ -90,14 +90,7 @@ install_theme(){
     local f1="$HOME/.themes"
     mkdir -p "$f1"
     
-    echo -e "\n"; read -e -p "Do you want to install Colloid gtk theme? (y/n): " ans
-    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-        colloidgtktheme #implementazione delle varie funzioni per installare i temi
-    fi  
-    echo -e "\n"; read -e -p "Do you want to install gruvbox gtk theme? (y/n): " ans
-    if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-        gruvboxgtktheme
-    fi
+    show_menu
     #finire implementazione marble shell
     echo -e "\n"; read -e -p "Do you want to install Marble-shell-theme? (y/n): " ans
     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
