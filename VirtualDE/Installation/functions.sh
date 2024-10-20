@@ -155,7 +155,7 @@ Setup(){
 
 install_pkgs () {
     sudo dnf install python3 python3-devel python3-pip \
-    java-17-openjdk java-17-openjdk-devel \
+    java-17-openjdk java-17-openjdk-devel php\
     cargo rust \
     alsa-lib-devel fftw3-devel pulseaudio-libs-devel libtool autoconf-archive iniparser-devel pkgconf \
     gtk-murrine-engine \
@@ -235,17 +235,13 @@ install_cursors() {
     local f1="$HOME/.icons"
     local f2="$HOME/Rick-Dotfiles/VirtualDE/Pointers"
     mkdir -p "$f1"
-
-    while true; do
-         read -e -p "Install your preferred cursor! (type 'q' for quitting): "
-        ls "$f2"
-            read -e -p input
-            if [[ "$input" == "q" ]]; then
-                echo "done"
-                break
-            fi
+    echo "\n"; read -e -p "Install your preferred cursor! (type 'q' for quitting): " ans
+    ls "$f2"
+    if [[ "$ans" == "q" ]]; then
+        echo "done"
+            break
+    fi
         eval cp -r "$f2"/"$input" "$f1"
-    done
 }
 
 install_tlp() {
