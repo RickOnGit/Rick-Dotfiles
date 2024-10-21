@@ -1,27 +1,28 @@
-source ./functions.sh
-source ./colors.sh
+source general/colors.sh
+source general/logo.sh
 
 while true 
 do
+    show_logo
     echo -e ""$CYAN"(?) "$YELLOW"Chose what to do :"$NC"\n"
-    echo -e "(A) Update the system\t (B) Customize the system\t (C) Install some programs\t (Q) Quit the program"
+    echo -e "(A) Customize the system\t (B) Install some programs\t (Q) Quit the script"
     echo -e -n "\n"$CYAN"(?) "$YELLOW"Chose an option [A-Q]: "$NC""
     read ans
 
-    if [[ "$ans" == "A" || "$ans" == "a" ]]; then
-        update_system
-    fi
-
-    if [[ "$ans" == "B" || "$ans" == "b" ]]; then
-        customize_system
-    fi
-
-    if [[ "$ans" == "C" || "$ans" == "c" ]]; then
-        extra_programs
-    fi
-
-    if [[ "$ans" == "Q" || "$ans" == "q" ]]; then
-        echo -e "Quitting the program..."
-        break
-    fi
+    case $ans in
+        A)        
+            customization_options
+            ;;
+        B)
+            programs_options
+            ;;
+        Q)
+            echo -e "Quitting the script..."
+            break
+            ;;
+        *)
+            echo -e "Invalid choice, retry..."
+            ;;
+    esac
+    clear
 done
