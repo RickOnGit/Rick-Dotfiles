@@ -1,5 +1,6 @@
 source general/colors.sh
 source general/logo.sh
+source customize/customize.sh
 
 while true 
 do
@@ -11,7 +12,7 @@ do
 
     case $ans in
         A)        
-            customization_options
+            customize_system
             ;;
         B)
             programs_options
