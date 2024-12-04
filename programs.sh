@@ -23,7 +23,8 @@ docker() {
 
     gum spin --spinner="dot" --title="Downloading" -- sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-    gum spin --spinner="dot" --title="Starting Docker" -- sudo systemctl enable --now docker
+    gum format "Enabling Docker daemon"
+    sudo systemctl enable --now docker
     gum spin --spinner="dot" --title="Testing Docker installation" -- sudo docker run hello-world
 
     gum spin --spinner="dot" --title="Installing docker compose" -- sudo dnf install docker-cli containerd docker-compose docker-switch
