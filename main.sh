@@ -3,7 +3,7 @@ source ./variables.sh
 # source "functions/themes.sh"
 # source "functions/fonts.sh"
 # source "functions/shell.sh"
-# source "functions/programs.sh"
+source ./programs.sh
 
 while true; do
     welcome "Welcome to my script, here's what you can do"
