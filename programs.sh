@@ -31,5 +31,6 @@ docker() {
     sudo docker run hello-world
 
     gum spin --spinner="dot" --title="Installing docker compose" -- sudo dnf install docker-cli containerd docker-compose docker-switch
+    sleep 20
 }
 
