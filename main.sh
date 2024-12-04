@@ -11,6 +11,7 @@ while true; do
 
     case "$ans" in
         "Install some programs ")
+            programs_main
             ;;
         "Install some packages  ")
             ;;
