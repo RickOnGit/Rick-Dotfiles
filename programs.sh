@@ -1,18 +1,20 @@
-while true; do
-    welcome "Here's a list of all the programs that you can install"
-    ans=$(echo -e "Install Docker Engine and Compose \nExit 󰩈" | gum choose --cursor=" ")
+programs_main() {
+    while true; do
+        welcome "Here's a list of all the programs that you can install"
+        ans=$(echo -e "Install Docker Engine and Compose \nExit 󰩈" | gum choose --cursor=" ")
 
-    case "$ans" in
-        "Install Docker Engine and Compose ")
-            docker
-            ;;
-        "Exit 󰩈")
-            gum spin --title="Quitting the script " --spinner="dot" -- sleep 2
-            clear
-            break 
-            ;;
-    esac
-done
+        case "$ans" in
+            "Install Docker Engine and Compose ")
+                docker
+                ;;
+            "Exit 󰩈")
+                gum spin --title="Quitting the script " --spinner="dot" -- sleep 2
+                clear
+                break 
+                ;;
+        esac
+    done
+}
 
 docker() {
     welcome "Installing Docker Engine and Docker Compose"
