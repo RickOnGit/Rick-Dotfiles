@@ -17,23 +17,23 @@ programs_main() {
 docker() {
     welcome "Installing Docker Engine and Docker Compose"
     
-    gum spin --spinner="dot" --title="Installing the repository "
+    gum format "Installing the repository "
     sudo dnf install dnf-plugins-core 
     gum format "Adding the repository..."
     sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 
     gum format "Downloading packages, if prompted this key: 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35; then accept"
 
-    gum spin --spinner="dot" --title="Downloading packages"
-    sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    gum format "Downloading packages"
+    sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin --allowerasing
 
     gum format "Enabling Docker daemon..."
     sudo systemctl enable --now docker
-    gum spin --spinner="dot" --title="Testing Docker installation"
+    sudo systemctl start --now docker
+    gum format "Testing Docker installation"
     sudo docker run hello-world
 
-    gum spin --spinner="dot" --title="Installing docker compose"
-    sudo dnf install docker-cli containerd docker-compose docker-switch
-    sleep 20
+    gum format "Installing docker compose"
+    sudo dnf install docker-cli containerd docker-compose docker-switch --allowerasing
 }
 
