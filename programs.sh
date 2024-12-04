@@ -28,8 +28,8 @@ docker() {
     sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin --allowerasing
 
     gum format "Enabling Docker daemon..."
-    sudo systemctl enable --now docker
-    sudo systemctl start --now docker
+    sudo systemctl enable docker
+    sudo systemctl start docker
     gum format "Testing Docker installation"
     sudo docker run hello-world
 
