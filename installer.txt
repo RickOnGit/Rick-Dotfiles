@@ -6,6 +6,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 curl -sS https://starship.rs/install.sh | sh
 
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
 flatpak install flathub com.mattjakeman.ExtensionManager md.obsidian.Obsidian com.tradingview.tradingview com.obsproject.Studio com.todoist.Todoist 
 
 git clone https://github.com/FeralInteractive/gamemode.git

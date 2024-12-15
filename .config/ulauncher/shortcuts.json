@@ -1,0 +1,12 @@
+{
+    "d84dbf04-1fec-4dfb-91d5-484af8e9be3e": {
+        "id": "d84dbf04-1fec-4dfb-91d5-484af8e9be3e",
+        "name": "Google Search",
+        "keyword": "g",
+        "cmd": "https://google.com/search?q=%s",
+        "icon": "/usr/share/ulauncher/media/google-search-icon.png",
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1734266868.1854334
+    }
+}
