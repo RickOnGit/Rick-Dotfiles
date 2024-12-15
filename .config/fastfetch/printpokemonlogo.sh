@@ -1,6 +1,2 @@
-# Genera l'ASCII art Pokémon e salvalo in un file
-pokemon-colorscripts -r > ~/.config/fastfetch/customlogo.txt
-
-# Esegui fastfetch
+sudo pokemon-colorscripts -n pikachu --no-title > $HOME/.config/fastfetch/logo.txt
 fastfetch --pipe false
-

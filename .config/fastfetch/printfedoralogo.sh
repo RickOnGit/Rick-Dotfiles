@@ -9,6 +9,5 @@ LOGO="\033[33m        ,'''''.
    '''''
 \033[0m"
 
-echo -e "$LOGO" > ~/.config/fastfetch/customlogo.txt
-
+sudo echo -e "$LOGO" > $HOME/.config/fastfetch/logo.txt
 fastfetch --pipe false
