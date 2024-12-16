@@ -1,27 +1,38 @@
-sudo dnf install -y @c-development @system-tools @php @java zsh meson systemd-devel pkg-config git dbus-devel cargo cava btop cmatrix cbonsai gnome-tweaks steam lsd fastfetch gtk-murrine-engine cmake dkms 7z 
+#Dnf packages
+sudo dnf install -y @c-development @system-tools @php @java zsh meson systemd-devel pkg-config git dbus-devel cargo cava btop cmatrix cbonsai gnome-tweaks steam lsd fastfetch gtk-murrine-engine cmake dkms 7z fzf sac vim neovim  
 
+#cargo packages
 cargo install tock vivid
 
+#oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
+#starship
 curl -sS https://starship.rs/install.sh | sh
-
+#zsh custom prompt
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-flatpak install flathub com.mattjakeman.ExtensionManager md.obsidian.Obsidian com.tradingview.tradingview com.obsproject.Studio com.todoist.Todoist 
+#flatpack apps
+flatpak install -y flathub com.mattjakeman.ExtensionManager md.obsidian.Obsidian com.tradingview.tradingview com.obsproject.Studio com.todoist.Todoist 
 
+#pop-os tiling
+git clone https://github.com/pop-os/shell.git
+sudo dnf install -y gnome-shell-extension-pop-shell xprop
+
+#gamemode
 git clone https://github.com/FeralInteractive/gamemode.git
 cd gamemode
 ./bootstrap.sh
 cd ~
 
+#pokemoncolorscripts
 git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git
 cd pokemon-colorscripts
 sudo ./install.sh
 cd ~
 
+#docker-engine docker-compose
 sudo dnf -y install dnf-plugins-core
 sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
@@ -30,10 +41,12 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 sudo dnf install -y docker-compose --allowerasing
 
+#VSCodium
 sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
 printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscodium.repo
 sudo dnf install -y codium
 
+#gum charm 
 echo '[charm]
 name=Charm
 baseurl=https://repo.charm.sh/yum/
@@ -42,5 +55,15 @@ gpgcheck=1
 gpgkey=https://repo.charm.sh/yum/gpg.key' | sudo tee /etc/yum.repos.d/charm.repo
 sudo rpm --import https://repo.charm.sh/yum/gpg.key
 sudo yum install gum
+
+#kubernetes
+	#kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+	#minikube
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
+sudo rpm -Uvh minikube-latest.x86_64.rpm
+minikube start
+minicube delete -all
 
 
