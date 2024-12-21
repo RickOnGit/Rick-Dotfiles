@@ -66,4 +66,6 @@ sudo rpm -Uvh minikube-latest.x86_64.rpm
 minikube start
 minicube delete -all
 
-
+#speed-test
+curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.rpm.sh | sudo bash
+sudo yum install speedtest
