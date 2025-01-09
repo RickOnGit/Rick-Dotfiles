@@ -1,5 +1,5 @@
 #Dnf packages
-sudo dnf install -y @c-development @system-tools @php @java zsh meson systemd-devel pkg-config git dbus-devel cargo cava btop cmatrix cbonsai gnome-tweaks steam lsd fastfetch gtk-murrine-engine cmake dkms 7z fzf sac vim neovim  
+sudo dnf install -y @c-development @system-tools @php @java zsh meson systemd-devel pkg-config git dbus-devel cargo cava btop cmatrix cbonsai gnome-tweaks steam lsd fastfetch gtk-murrine-engine cmake dkms 7z fzf sac vim neovim npm nodejs --skip-broken 
 
 #cargo packages
 cargo install tock vivid
@@ -69,3 +69,11 @@ minicube delete -all
 #speed-test
 curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.rpm.sh | sudo bash
 sudo yum install speedtest
+
+#dvlp
+cd ~
+git clone https://github.com/Maddoxkkm/dvpl_converter.git
+cd dvpl_converter
+npm install
+sudo npm install -g
+cd ~ 
